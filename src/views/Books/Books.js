@@ -7,7 +7,6 @@ export default function Books() {
     const fetch = async () => {
       try {
         const data = await fetchBooks();
-        console.log(data);
         setBooks(data);
       } catch (error) {
         alert(error.message);
