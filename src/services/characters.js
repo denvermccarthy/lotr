@@ -1,3 +1,5 @@
+import { checkError, client } from './client';
+
 export async function fetchCharacters(race, query = '') {
   const urlParams = new URLSearchParams();
   if (race !== 'All') {
@@ -19,4 +21,11 @@ export async function fetchCharacters(race, query = '') {
   );
   const data = await resp.json();
   return data;
+}
+
+export async function fetchRaces() {
+  const resp = await client.from('characters').select('race');
+  const data = checkError(resp);
+  const array = data.map((item) => item.race);
+  return [...new Set(array)];
 }
