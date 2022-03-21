@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchFilms } from '../../services/films';
+import './Films.css';
 
 export default function Films() {
   const [films, setFilms] = useState([]);
@@ -7,7 +8,6 @@ export default function Films() {
     const fetch = async () => {
       try {
         const data = await fetchFilms();
-        console.log(data);
         setFilms(data);
       } catch (error) {
         alert(error.message);
@@ -17,7 +17,7 @@ export default function Films() {
   }, []);
 
   return (
-    <div>
+    <div className="films">
       {films.map((film) => (
         <div key={film.id}>
           <h3>{film.title}</h3>
