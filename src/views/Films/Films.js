@@ -7,8 +7,8 @@ export default function Films() {
     const fetch = async () => {
       try {
         const data = await fetchFilms();
-        setFilms(data);
         console.log(data);
+        setFilms(data);
       } catch (error) {
         alert(error.message);
       }
@@ -23,6 +23,11 @@ export default function Films() {
           <h3>{film.title}</h3>
           <p>Academy Award Nominations: {film.academy_award_nominations}</p>
           <p>Box Office Total: {film.box_office_total}</p>
+          <img
+            src={`${process.env.PUBLIC_URL}/films/${film.title
+              .toLowerCase()
+              .replaceAll(' ', '-')}.jpeg`}
+          />
         </div>
       ))}
     </div>
